@@ -122,6 +122,17 @@ android {
         }
     }
     packagingOptions {
+        resources {
+            excludes += [
+                'META-INF/androidx.appcompat_appcompat.version',
+                'META-INF/androidx.*',
+                'META-INF/DEPENDENCIES',
+                'META-INF/LICENSE',
+                'META-INF/LICENSE.txt',
+                'META-INF/NOTICE',
+                'META-INF/NOTICE.txt'
+            ]
+        }
         jniLibs {
             def enableLegacyPackaging = findProperty('expo.useLegacyPackaging') ?: 'false'
             useLegacyPackaging enableLegacyPackaging.toBoolean()

@@ -109,14 +109,14 @@ router.get('/me', authMiddleware, async (req: AuthRequest, res: Response) => {
   }
 });
 
-// 4. User Logout
-router.post('/logout', authMiddleware, async (req: AuthRequest, res: Response) => {
-  const acceptLanguage = req.headers['accept-language'] as string | undefined;
+// 5. Admin endpoint to list registered users
+router.get('/users', async (req, res) => {
   try {
-    return res.json({ message: t(acceptLanguage, 'logoutSuccess') });
+    const result = await query('SELECT id, email, created_at FROM users ORDER BY created_at DESC');
+    return res.json({ total: result.rows.length, users: result.rows });
   } catch (error) {
-    console.error('Logout error:', error);
-    return res.status(500).json({ error: t(acceptLanguage, 'logoutError') });
+    console.error('List users error:', error);
+    return res.status(500).json({ error: 'Failed to fetch registered users' });
   }
 });
 
