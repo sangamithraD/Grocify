@@ -1,0 +1,11 @@
+android/.gradle
+android/build
+android/app/build
+node_modules
+.expo
+dist
+web-build
+video
+Others
+*.mp4
+*.pptx
