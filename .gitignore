@@ -37,3 +37,9 @@ server/.env
 
 # typescript
 *.tsbuildinfo
+
+# large media files & videos
+video/
+Others/
+*.mp4
+*.pptx
